@@ -37,4 +37,4 @@ jobs:
       run: npm install -g gh-pages@latest
 
     - name: Deploy to GitHub Pages
-      run: gh-pages -d build/web
+      run: gh-pages -d "build/web"
