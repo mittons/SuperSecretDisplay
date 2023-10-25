@@ -47,7 +47,7 @@ jobs:
         # because your workspace already has a .git directory and you are essentially working with a fresh, separate repository now.
         git init
         
-        # User stuff
+        
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
 
