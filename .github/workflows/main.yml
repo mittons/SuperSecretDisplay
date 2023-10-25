@@ -47,6 +47,10 @@ jobs:
         # because your workspace already has a .git directory and you are essentially working with a fresh, separate repository now.
         git init
         
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+        
         # Instead of re-initializing, you can directly use git to add and commit
         # Note: The email and name don't have to be real, they're just used for the commit details
         git add .
