@@ -56,12 +56,13 @@ jobs:
         # Note: The email and name don't have to be real, they're just used for the commit details
         git add .
 
-        # The GITHUB_ACTOR env variable is the name of the person or app that initiates the workflow
-        git commit -m 'Deploy to gh-pages' --author="${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>"
+        git commit -m 'Deploy to gh-pages'
+
+        git remote add gh-token "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
 
         # Force push from the current repo's master branch to the remote
         # repo's gh-pages branch. (All previous history on the gh-pages
         # branch will be lost, since we are overwriting it.)
-        git push --force "https://${{ github.token }}@github.com/${{ github.repository }}.git" HEAD:gh-pages
+        git push gh-token HEAD:gh-pages --force
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # This token is provided by Actions, you do not need to create your own token
