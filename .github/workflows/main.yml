@@ -1,0 +1,37 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # or another version that you prefer
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '2.x.x' # specify the Flutter version
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Create configuration
+      run: |
+        echo "// config.dart" > lib/config.dart
+        echo "const String superSecretData = '${{ secrets.SUPER_SECRET_DATA }}';" >> lib/config.dart
+
+    - name: Build Flutter Web
+      run: flutter build web --release
+
+    - name: Deploy to GitHub Pages
+      run: npx gh-pages -d build/web
