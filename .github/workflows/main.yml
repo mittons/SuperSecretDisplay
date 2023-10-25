@@ -37,4 +37,4 @@ jobs:
       run: npm install -g gh-pages@6.0.0
 
     - name: Deploy to GitHub Pages
-      run: gh-pages -d "build/web"
+      run: node --trace-warnings $(which gh-pages) -d build/web
