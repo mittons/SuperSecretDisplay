@@ -15,12 +15,12 @@ jobs:
     - name: Setup Node.js environment
       uses: actions/setup-node@v2
       with:
-        node-version: '14' # or another version that you prefer
+        node-version: '20' # or another version that you prefer
 
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '2.x.x' # specify the Flutter version
+        flutter-version: '3.13.7' # specify the Flutter version
 
     - name: Install dependencies
       run: flutter pub get
