@@ -31,7 +31,7 @@ jobs:
         echo "const String superSecretData = '${{ secrets.SUPER_SECRET_DATA }}';" >> lib/config.dart
 
     - name: Build Flutter Web
-      run: flutter build web --release
+      run: flutter build web --release --base-href /SuperSecretDisplay/
 
     - name: Test
       run: dir
